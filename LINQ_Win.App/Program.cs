@@ -16,7 +16,7 @@ namespace LINQ_Win.App
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new LINQ_Standard());
+			Application.Run(new 基本查詢());
 		}
 	}
 }
