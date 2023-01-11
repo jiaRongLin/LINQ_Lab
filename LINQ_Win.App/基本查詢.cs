@@ -100,7 +100,7 @@ namespace LINQ_Win.App
 			//		   group num by (num % 2 == 0)  into N
 			//		   select new
 			//		   {
-			//			   key = N.Key ==true? "偶數" : "奇數",
+			//			   key = N.Key ? "偶數" : "奇數",
 
 			//			   count = N.Count()
 			//		   };
