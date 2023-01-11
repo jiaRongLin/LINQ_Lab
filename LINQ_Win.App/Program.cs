@@ -16,7 +16,7 @@ namespace LINQ_Win.App
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new DataSet());
+			Application.Run(new LINQ_Standard());
 		}
 	}
 }

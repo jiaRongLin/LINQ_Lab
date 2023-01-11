@@ -24,17 +24,28 @@ namespace LINQ_Win.App
 			EmployeesTableAdapter TaEmp = new EmployeesTableAdapter();
 			TaEmp.Fill(DSnw.Employees);
 
-			//dataGridView1.DataSource = DSnw.Employees;
+			//dataGridView1.DataSource = DSnw.Employees; 兩種方法都可以
 			dataGridView1.DataSource = TaEmp.GetData();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
 		{
 			NorthwindDataset DSnw = new NorthwindDataset();
-			EmployeesTableAdapter Taemp = new EmployeesTableAdapter();
-			Taemp.FillBy(DSnw.Employees);
+			EmployeesTableAdapter TaEmp = new EmployeesTableAdapter();
+			TaEmp.FillBy(DSnw.Employees);
 
 			dataGridView1.DataSource = DSnw.Employees;
+			//dataGridView1.DataSource = TaEmp.GetDataBy(); 兩種方法都可以
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			NorthwindDataset DSnw = new NorthwindDataset();
+			Employees1TableAdapter TaEmp = new Employees1TableAdapter();
+			TaEmp.FillByUSA(DSnw.Employees1);
+
+			dataGridView1.DataSource = DSnw.Employees1;
+			//dataGridView1.DataSource = TaEmp.GetDataByUSA(); 兩種方法都可以
 		}
 	}
 }

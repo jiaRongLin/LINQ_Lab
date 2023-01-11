@@ -58,6 +58,12 @@
     <Compile Include="DataSet.Designer.cs">
       <DependentUpon>DataSet.cs</DependentUpon>
     </Compile>
+    <Compile Include="LINQ_Standard.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LINQ_Standard.Designer.cs">
+      <DependentUpon>LINQ_Standard.cs</DependentUpon>
+    </Compile>
     <Compile Include="NorthwindDataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -70,6 +76,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="DataSet.resx">
       <DependentUpon>DataSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LINQ_Standard.resx">
+      <DependentUpon>LINQ_Standard.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
