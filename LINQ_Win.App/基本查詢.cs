@@ -41,14 +41,71 @@ namespace LINQ_Win.App
 		private void button2_Click(object sender, EventArgs e)
 		{
 			NorthwindDataset NorthDs = new NorthwindDataset();
-			EmployeesTableAdapter empTa = new EmployeesTableAdapter();
-			empTa.Fill(NorthDs.Employees);
+			EmployeesTableAdapter EmpTa = new EmployeesTableAdapter();
+			EmpTa.Fill(NorthDs.Employees);
 
 			var qEmp = from emp in NorthDs.Employees
 					   group emp by emp.Country into gEmp
 					   select new { country = gEmp.Key, count = gEmp.Count()};
 
 			dataGridView1.DataSource = qEmp.ToList();
+		}
+
+		private void button3_Click(object sender, EventArgs e)
+		{
+			NorthwindDataset NorthDs = new NorthwindDataset();
+			EmployeesTableAdapter EmpTa = new EmployeesTableAdapter();
+			EmpTa.Fill(NorthDs.Employees);
+
+			var qEmp = from emp in NorthDs.Employees
+					   where emp.Country == "USA"
+					   select new NewEmployeeSelect
+					   {
+						   Name = emp.FirstName + " " + emp.LastName,
+						   City = emp.City+","+emp.Country,
+						   Age = DateTime.Now.Year - emp.BirthDate.Year
+					   };
+
+			dataGridView1.DataSource=qEmp.ToList();
+		}
+
+		private void button4_Click(object sender, EventArgs e)
+		{
+			int[] arrayNum = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+			var qNum = from num in arrayNum
+					   where num % 2 == 0
+					   select new
+					   {
+						   偶數 = num.ToString(),
+					   };
+
+			dataGridView1.DataSource = qNum.ToList();
+		}
+
+		private void button5_Click(object sender, EventArgs e)
+		{
+			int[] arrayNum = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+
+			var qNum = from num in arrayNum
+					   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
+					   select new
+					   {
+						   key = N.Key.ToString(),
+
+						   count = N.Count()
+					   };
+
+			//var qNum = from num in arrayNum
+			//		   group num by (num % 2 == 0)  into N
+			//		   select new
+			//		   {
+			//			   key = N.Key ==true? "偶數" : "奇數",
+
+			//			   count = N.Count()
+			//		   };
+
+			dataGridView1.DataSource = qNum.ToList();
 		}
 	}
 }
