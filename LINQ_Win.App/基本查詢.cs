@@ -71,7 +71,13 @@ namespace LINQ_Win.App
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			int[] arrayNum = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			int start = 0, count = 10;
+			int[] arrayNum = new int[count];
+
+			for(int i = 0; i < count; i++)
+			{
+				arrayNum[i] = start+i;
+			}
 
 			var qNum = from num in arrayNum
 					   where num % 2 == 0
@@ -85,7 +91,13 @@ namespace LINQ_Win.App
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			int[] arrayNum = { 0, 1, 2, 3, 4, 5, 6, 7, 8, 9 };
+			int start = 0, count = 10;
+			int[] arrayNum = new int[count];
+
+			for (int i = 0; i < count; i++)
+			{
+				arrayNum[i] = start + i;
+			}
 
 			var qNum = from num in arrayNum
 					   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
