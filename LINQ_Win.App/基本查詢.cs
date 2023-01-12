@@ -71,13 +71,7 @@ namespace LINQ_Win.App
 
 		private void button4_Click(object sender, EventArgs e)
 		{
-			int start = 0, count = 10;
-			int[] arrayNum = new int[count];
-
-			for(int i = 0; i < count; i++)
-			{
-				arrayNum[i] = start+i;
-			}
+			int[] arrayNum = Num(0,10);
 
 			var qNum = from num in arrayNum
 					   where num % 2 == 0
@@ -91,13 +85,7 @@ namespace LINQ_Win.App
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			int start = 0, count = 10;
-			int[] arrayNum = new int[count];
-
-			for (int i = 0; i < count; i++)
-			{
-				arrayNum[i] = start + i;
-			}
+			int[] arrayNum = Num(0,10);
 
 			var qNum = from num in arrayNum
 					   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
@@ -118,6 +106,23 @@ namespace LINQ_Win.App
 			//		   };
 
 			dataGridView1.DataSource = qNum.ToList();
+		}
+		/// <summary>
+		/// 產生陣列
+		/// </summary>
+		/// <param name="start">開始數字</param>
+		/// <param name="count">幾個</param>
+		/// <returns>return陣列</returns>
+		public static int[] Num(int start, int count)
+		{
+			int[] arrayNum = new int[count];
+
+			for (int i = 0; i < count; i++)
+			{
+				arrayNum[i] = start + i;
+			}
+
+			return arrayNum;
 		}
 	}
 }
