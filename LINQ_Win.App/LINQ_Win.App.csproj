@@ -64,6 +64,9 @@
     <Compile Include="Categories.cs">
       <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
+    <Compile Include="Customers.cs">
+      <DependentUpon>Northwind.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -129,6 +132,12 @@
     <Compile Include="彙總運算.Designer.cs">
       <DependentUpon>彙總運算.cs</DependentUpon>
     </Compile>
+    <Compile Include="群組.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="群組.Designer.cs">
+      <DependentUpon>群組.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ADO.Net.resx">
       <DependentUpon>ADO.Net.cs</DependentUpon>
     </EmbeddedResource>
@@ -158,6 +167,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="彙總運算.resx">
       <DependentUpon>彙總運算.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="群組.resx">
+      <DependentUpon>群組.cs</DependentUpon>
     </EmbeddedResource>
     <EntityDeploy Include="Northwind.edmx">
       <Generator>EntityModelCodeGenerator</Generator>

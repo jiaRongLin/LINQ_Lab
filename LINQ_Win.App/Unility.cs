@@ -14,4 +14,15 @@ namespace LINQ_Win.App
 		public int Age { get; internal set; }
 
 	}
+	public class Contact
+	{
+		public int ComID { get; set; }
+		public string ContactName { get; set; }
+	}
+	public class Company
+	{
+		public int ComID { get; set; }
+		public string CompanyName { get; set; }
+
+	}
 }

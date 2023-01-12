@@ -28,5 +28,6 @@ namespace LINQ_Win.App
         public virtual DbSet<Employees> Employees { get; set; }
         public virtual DbSet<Products> Products { get; set; }
         public virtual DbSet<Categories> Categories { get; set; }
+        public virtual DbSet<Customers> Customers { get; set; }
     }
 }
