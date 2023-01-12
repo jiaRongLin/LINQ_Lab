@@ -91,7 +91,7 @@ namespace LINQ_Win.App
 					   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
 					   select new
 					   {
-						   key = N.Key.ToString(),
+						   key = N.Key,
 
 						   count = N.Count()
 					   };
