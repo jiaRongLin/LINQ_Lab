@@ -211,8 +211,37 @@ namespace LINQ_Win.App
 					{
 						ProductName = Pro.ProductName,
 						ProductUnitPrice = Pro.UnitPrice,
-						CategoryName = Pro.Categories.CategoryName
+						CategoryName = Pro.Categories.CategoryName //導覽屬性 跟join結果依
 					};
+
+			dataGridView1.DataSource = q.ToList();
+		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			var q = from cate in NorEn.Categories
+					from p in cate.Products
+					orderby p.CategoryID
+					select new
+					{
+						p.CategoryID,
+						p.ProductName,
+						p.UnitPrice,
+						cate.CategoryName,
+						cate.Picture
+					};
+
+			//var q1 = from p in NorEn.Products
+			//		from c in p.Categories
+			//		orderby c.CategoryID
+			//		select new
+			//		{
+			//			c.CategoryID,
+			//			p.ProductName,
+			//			p.UnitPrice,
+			//			c.CategoryName,
+			//			c.Picture
+			//		};
 
 			dataGridView1.DataSource = q.ToList();
 		}
