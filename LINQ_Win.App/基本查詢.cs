@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.AxHost;
 
 namespace LINQ_Win.App
 {
@@ -69,9 +70,10 @@ namespace LINQ_Win.App
 			dataGridView1.DataSource=qEmp.ToList();
 		}
 
+
 		private void button4_Click(object sender, EventArgs e)
 		{
-			int[] arrayNum = Num(0,10);
+			int[] arrayNum = Num(0,9);
 
 			var qNum = from num in arrayNum
 					   where num % 2 == 0
@@ -85,19 +87,26 @@ namespace LINQ_Win.App
 
 		private void button5_Click(object sender, EventArgs e)
 		{
-			int[] arrayNum = Num(0,10);
-
+			int[] arrayNum = Num(0,9);
+			//有三種寫法
 			var qNum = from num in arrayNum
-					   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
+					   group num by GetGroupNum(num) into N
 					   select new
 					   {
 						   key = N.Key,
-
 						   count = N.Count()
 					   };
+			//var qNum = from num in arrayNum
+			//		   group num by (num % 2 == 0) ? "偶數" : "奇數" into N
+			//		   select new
+			//		   {
+			//			   key = N.Key,
+
+			//			   count = N.Count()
+			//		   };
 
 			//var qNum = from num in arrayNum
-			//		   group num by (num % 2 == 0)  into N
+			//		   group num by (num % 2 == 0) into N
 			//		   select new
 			//		   {
 			//			   key = N.Key ? "偶數" : "奇數",
@@ -108,16 +117,26 @@ namespace LINQ_Win.App
 			dataGridView1.DataSource = qNum.ToList();
 		}
 		/// <summary>
+		/// 判斷奇偶數
+		/// </summary>
+		/// <param name="Num"></param>
+		/// <returns></returns>
+		public static string GetGroupNum (int Num)
+		{
+			return Num % 2 == 0 ? "偶數" : "奇數";
+		}
+		/// <summary>
 		/// 產生陣列
 		/// </summary>
 		/// <param name="start">開始數字</param>
-		/// <param name="count">幾個</param>
+		/// <param name="end">結束數字</param>
 		/// <returns>return陣列</returns>
-		public static int[] Num(int start, int count)
+		public static int[] Num(int start, int end)
 		{
+			int count = end - start + 1;
 			int[] arrayNum = new int[count];
-
-			for (int i = 0; i < count; i++)
+			
+			for (int i = 0; i < count ; i++)
 			{
 				arrayNum[i] = start + i;
 			}

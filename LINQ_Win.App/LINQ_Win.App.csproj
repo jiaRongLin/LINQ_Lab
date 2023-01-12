@@ -33,8 +33,17 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -52,11 +61,23 @@
     <Compile Include="ADO.Net.Designer.cs">
       <DependentUpon>ADO.Net.cs</DependentUpon>
     </Compile>
+    <Compile Include="Categories.cs">
+      <DependentUpon>Northwind.tt</DependentUpon>
+    </Compile>
     <Compile Include="DataSet.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="DataSet.Designer.cs">
       <DependentUpon>DataSet.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Employees.cs">
+      <DependentUpon>Northwind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="EntityFramework.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="EntityFramework.Designer.cs">
+      <DependentUpon>EntityFramework.cs</DependentUpon>
     </Compile>
     <Compile Include="LINQ_Standard.cs">
       <SubType>Form</SubType>
@@ -64,10 +85,28 @@
     <Compile Include="LINQ_Standard.Designer.cs">
       <DependentUpon>LINQ_Standard.cs</DependentUpon>
     </Compile>
+    <Compile Include="Northwind.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Northwind.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Northwind.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Northwind.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Northwind.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Northwind.edmx</DependentUpon>
+    </Compile>
     <Compile Include="NorthwindDataset.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>NorthwindDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Products.cs">
+      <DependentUpon>Northwind.tt</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -84,11 +123,20 @@
     <Compile Include="基本查詢.Designer.cs">
       <DependentUpon>基本查詢.cs</DependentUpon>
     </Compile>
+    <Compile Include="彙總運算.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="彙總運算.Designer.cs">
+      <DependentUpon>彙總運算.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="ADO.Net.resx">
       <DependentUpon>ADO.Net.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="DataSet.resx">
       <DependentUpon>DataSet.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="EntityFramework.resx">
+      <DependentUpon>EntityFramework.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="LINQ_Standard.resx">
       <DependentUpon>LINQ_Standard.cs</DependentUpon>
@@ -108,6 +156,16 @@
     <EmbeddedResource Include="基本查詢.resx">
       <DependentUpon>基本查詢.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="彙總運算.resx">
+      <DependentUpon>彙總運算.cs</DependentUpon>
+    </EmbeddedResource>
+    <EntityDeploy Include="Northwind.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Northwind.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Northwind.edmx.diagram">
+      <DependentUpon>Northwind.edmx</DependentUpon>
+    </None>
     <None Include="NorthwindDataset.xsc">
       <DependentUpon>NorthwindDataset.xsd</DependentUpon>
     </None>
@@ -119,6 +177,7 @@
     <None Include="NorthwindDataset.xss">
       <DependentUpon>NorthwindDataset.xsd</DependentUpon>
     </None>
+    <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -131,6 +190,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Northwind.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>Northwind.Context.cs</LastGenOutput>
+      <DependentUpon>Northwind.edmx</DependentUpon>
+    </Content>
+    <Content Include="Northwind.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Northwind.edmx</DependentUpon>
+      <LastGenOutput>Northwind.cs</LastGenOutput>
+    </Content>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
