@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LINQ_Win.App
 {
@@ -208,5 +209,27 @@ namespace LINQ_Win.App
 				MessageBox.Show("所有種類都有圖片");
 			}
 		}
+
+		private void button12_Click(object sender, EventArgs e)
+		{
+			//Func<int, string> RetuenBirthYear = ReturnMethod;
+
+			//Func<int, string> RetuenBirthYear = Age=>$"出生年{DateTime.Now.Year-Age}";
+
+			Func<int, string> RetuenBirthYear = (int Age) =>
+			{
+				int birthYear = DateTime.Now.Year - Age;
+				string result = "出生年" + birthYear;
+				return result;
+			};
+			MessageBox.Show(RetuenBirthYear(20));
+		}
+
+		//string ReturnMethod(int Age)
+		//{
+		//	int birthYear = DateTime.Now.Year - Age;
+		//	string result = "出生年" + birthYear;
+		//	return	result;
+		//}
 	}
 }
