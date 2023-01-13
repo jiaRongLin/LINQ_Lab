@@ -16,7 +16,7 @@ namespace LINQ_Win.App
 		{
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
-			Application.Run(new EntityFramework());
+			Application.Run(new LINQ擴充語法());
 		}
 	}
 }
