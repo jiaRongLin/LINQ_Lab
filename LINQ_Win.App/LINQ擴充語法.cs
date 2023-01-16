@@ -225,6 +225,38 @@ namespace LINQ_Win.App
 			MessageBox.Show(RetuenBirthYear(20));
 		}
 
+		private void button13_Click(object sender, EventArgs e)
+		{
+			//	MyFunc("USA", c =>
+			//	{
+			//		//return Nordb.Employees.Where(emp => emp.Country == c).First().FirstName;
+			//		return Nordb.Employees.First(emp => emp.Country == c).FirstName;
+
+
+
+			//	});
+
+			MyFunc("USA", c => Nordb.Employees.First(emp => emp.Country == c).FirstName);
+
+			//MessageBox.Show( EmployeeFirstName("USA"));
+
+
+		}
+
+		string EmployeeFirstName(string country)
+		{
+			var q = (from emp in Nordb.Employees
+					 where emp.Country == country
+					 select new { emp.FirstName }).ToList();
+
+
+			return q[0].FirstName;
+		}
+
+		void MyFunc(string country,Func<string,string> ReturnFunc)
+		{
+			MessageBox.Show( ReturnFunc(country));
+		}
 		//string ReturnMethod(int Age)
 		//{
 		//	int birthYear = DateTime.Now.Year - Age;

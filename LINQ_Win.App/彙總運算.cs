@@ -58,5 +58,25 @@ namespace LINQ_Win.App
 			dataGridView1.DataSource = qPro.ToList();
 
 		}
+
+		private void button2_Click(object sender, EventArgs e)
+		{
+			NorthwindDataset Nords = new NorthwindDataset();
+
+			new ProductsTableAdapter().Fill(Nords.Products);
+
+			var q = Nords.Products.OrderByDescending(p => p.UnitPrice).Take(7).Select(p => p.UnitPrice).Aggregate((total, next) => total + next);
+
+			//var q = Nords.Products.OrderBy(p => p.UnitPrice).Take(7).Select(p => p.UnitPrice).Aggregate((total, next) =>total + next);
+
+			MessageBox.Show(q.ToString());
+
+
+			//var q = Nords.Products.OrderBy(p => p.UnitPrice).Take(7).Aggregate((p, next) => p.UnitPrice>next.UnitPrice? p:next);
+
+			//MessageBox.Show(q.ProductName + " " + q.UnitPrice);
+
+			//dataGridView1.DataSource = q;
+		}
 	}
 }
